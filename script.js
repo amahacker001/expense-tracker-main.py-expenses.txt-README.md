@@ -12,15 +12,21 @@ function addExpense(localStorage.setItem("expenses", JSON.stringify(expenses));)
     category
   });
 
+  function loadExpenses() {
   let list = document.getElementById("list");
-  let li = document.createElement("li");
 
-  li.innerHTML = `
-    ${name} (${category}) - ₦${amount}
-    <button onclick="deleteExpense(this)">❌</button>
-  `;
+  expenses.forEach(expense => {
+    let li = document.createElement("li");
 
-  list.appendChild(li);
+    li.innerHTML = `
+      ${expense.name} (${expense.category}) - ₦${expense.amount}
+      <button onclick="deleteExpense(this)">❌</button>
+    `;
+
+    list.appendChild(li);
+  });
+
+  updateTotal();
 }
 
  function updateTotal() {
