@@ -10,7 +10,10 @@ function addExpense() {
     let list = document.getElementById("list");
 
     let li = document.createElement("li");
-    li.textContent = name + " - ₦" + amount;
+    li.innerHTML = `
+    ${name} - ₦${amount}
+    <button onclick="deleteExpense(this)">❌</button>
+`;
 
     list.appendChild(li);
 
