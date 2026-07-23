@@ -1,82 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Project</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background: #f4f6f8;
-        margin: 0;
-    }
-
-    .container {
-        max-width: 400px;
-        margin: 60px auto;
-        background: #fff;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-
-    h1 {
-        text-align: center;
-    }
-
-    input {
-        padding: 10px;
-        margin: 5px 0;
-        width: 45%;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-    }
-
-    button {
-        padding: 10px;
-        border: none;
-        background: #4CAF50;
-        color: white;
-        border-radius: 8px;
-    }
-
-    ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    li {
-        background: #f1f1f1;
-        margin-top: 10px;
-        padding: 10px;
-        border-radius: 8px;
-    }
-
-    #total {
-        text-align: center;
-    }
-</style>
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="container">
 
-        <h1>💰ExpenseTracker</h1>
+  <div class="container">
+    <h1>Expense Tracker</h1>
 
-        <input type="text" id="name" placeholder="Expense name">
-        <input type="number" id="amount" placeholder="Amount">
-<select id="category">
-  <option>Food</option>
-  <option>Transport</option>
-  <option>Bills</option>
-  <option>Other</option>
-</select>
-        <button onclick="addExpense()">Add</button>
+    <input id="name" placeholder="Expense name">
+    <input id="amount" placeholder="Amount">
 
-        <ul id="list"></ul>
+    <select id="category">
+      <option>Food</option>
+      <option>Transport</option>
+      <option>Bills</option>
+    </select>
 
-        <h3 id="total">Total: ₦0</h3>
+    <button onclick="addExpense()">Add</button>
 
-    </div>
+    <ul id="list"></ul>
 
-    <script src="script.js"></script>
+    <h3>Total: <span id="total">₦0</span></h3>
+  </div>
+
+  <script src="script.js"></script>
+
 </body>
 </html>
-<button id="addBtn">Add</button>
