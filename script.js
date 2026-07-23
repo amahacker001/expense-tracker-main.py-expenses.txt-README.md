@@ -28,7 +28,20 @@ function addExpense() {
     document.getElementById("name").value = "";
     document.getElementById("amount").value = "";
 
-    displayExpenses();
-}
+function displayExpenses() {
+    let list = document.getElementById("list");
+    let total = 0;
 
-window.onload = displayExpenses;
+    list.innerHTML = "";
+
+    expenses.forEach((exp) => {
+        let li = document.createElement("li");
+        li.textContent = exp.name + " - ₦" + exp.amount;
+
+        total += Number(exp.amount);
+
+        list.appendChild(li);
+    });
+
+    document.getElementById("total").textContent = "Total: ₦" + total;
+}
