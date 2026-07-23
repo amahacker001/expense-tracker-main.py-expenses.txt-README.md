@@ -1,35 +1,60 @@
 let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
-function addExpense(localStorage.setItem("expenses", JSON.stringify(expenses));) {
+
+// ADD EXPENSE
+function addExpense() {
   const name = document.getElementById("name").value;
-  const amount = document.getElementById("amount").value;
+  const amount = parseFloat(document.getElementById("amount").value);
   const category = document.getElementById("category").value;
 
-  if (!name || !amount) return;
+  if (!name || isNaN(amount)) return;
 
-  expenses.push({
+  const expense = {
     name,
     amount,
     category
-  });
+  };
 
-  function loadExpenses() {
+  expenses.push(expense);
+
+  localStorage.setItem("expenses", JSON.stringify(expenses));
+
+  displayExpenses();
+  updateTotal();
+
+  // Clear input fields
+  document.getElementById("name").value = "";
+  document.getElementById("amount").value = "";
+}
+
+// DISPLAY EXPENSES
+function displayExpenses() {
   let list = document.getElementById("list");
+  list.innerHTML = "";
 
-  expenses.forEach(expense => {
+  expenses.forEach((expense, index) => {
     let li = document.createElement("li");
 
     li.innerHTML = `
       ${expense.name} (${expense.category}) - ₦${expense.amount}
-      <button onclick="deleteExpense(this)">❌</button>
+      <button onclick="deleteExpense(${index})">❌</button>
     `;
 
     list.appendChild(li);
   });
+}
 
+// DELETE EXPENSE
+function deleteExpense(index) {
+  expenses.splice(index, 1);
+
+  localStorage.setItem("expenses", JSON.stringify(expenses));
+
+  displayExpenses();
   updateTotal();
 }
 
- function updateTotal() {
+// UPDATE TOTAL
+function updateTotal() {
   let total = 0;
 
   expenses.forEach(expense => {
@@ -38,26 +63,12 @@ function addExpense(localStorage.setItem("expenses", JSON.stringify(expenses));)
 
   document.getElementById("total").innerText = "₦" + total;
 }
-  // Clear inputs
-  document.getElementById("name").value = "";
-  document.getElementById("amount").value = "";
+
+// LOAD ON START
+function loadExpenses() {
+  displayExpenses();
+  updateTotal();
 }
 
-function deleteExpense(button) {
-  const li = button.parentElement;
-
-  // Get amount from text
-  let text = li.textContent;
-  let amount = text.split("₦")[1];
-  amount = Number(amount);
-
-  // Update total
-  let total = document.getElementById("total");
-  let currentTotal = total.textContent.replace("Total: ₦", "");
-  currentTotal = Number(currentTotal) - amount;
-
-  total.textContent = "Total: ₦" + currentTotal;
-
-  // Remove item
-  li.remove();
-}
+// RUN WHEN PAGE LOADS
+loadExpenses();
