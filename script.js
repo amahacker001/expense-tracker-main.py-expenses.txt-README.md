@@ -1,47 +1,27 @@
-let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
-
-function displayExpenses() {
-    let list = document.getElementById("list");
-    list.innerHTML = "";
-
-    expenses.forEach((exp, index) => {
-        let li = document.createElement("li");
-        li.textContent = exp.name + " - ₦" + exp.amount;
-
-        list.appendChild(li);
-    });
-}
-
 function addExpense() {
     let name = document.getElementById("name").value;
     let amount = document.getElementById("amount").value;
 
     if (name === "" || amount === "") {
-        alert("Fill all fields");
+        alert("Please enter all fields");
         return;
     }
 
-    expenses.push({ name, amount });
+    let list = document.getElementById("list");
 
-    localStorage.setItem("expenses", JSON.stringify(expenses));
+    let li = document.createElement("li");
+    li.textContent = name + " - ₦" + amount;
 
+    list.appendChild(li);
+
+    // Update total
+    let total = document.getElementById("total");
+    let currentTotal = total.textContent.replace("Total: ₦", "");
+    currentTotal = Number(currentTotal) + Number(amount);
+
+    total.textContent = "Total: ₦" + currentTotal;
+
+    // Clear inputs
     document.getElementById("name").value = "";
     document.getElementById("amount").value = "";
-
-function displayExpenses() {
-    let list = document.getElementById("list");
-    let total = 0;
-
-    list.innerHTML = "";
-
-    expenses.forEach((exp) => {
-        let li = document.createElement("li");
-        li.textContent = exp.name + " - ₦" + exp.amount;
-
-        total += Number(exp.amount);
-
-        list.appendChild(li);
-    });
-
-    document.getElementById("total").textContent = "Total: ₦" + total;
 }
