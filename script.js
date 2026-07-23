@@ -1,11 +1,10 @@
-function addExpense() {
-  let name = document.getElementById("name").value;
-  let amount = document.getElementById("amount").value;
+const category = document.getElementById("category").value;
 
-  if (name === "" || amount === "") {
-    alert("Please enter all fields");
-    return;
-  }
+expenses.push({
+  name,
+  amount,
+  category
+});
 
   let list = document.getElementById("list");
 
