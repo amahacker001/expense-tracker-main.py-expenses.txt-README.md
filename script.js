@@ -32,5 +32,19 @@ function addExpense() {
 
 function deleteExpense(button) {
   const li = button.parentElement;
+
+  // Get amount from text
+  let text = li.textContent;
+  let amount = text.split("₦")[1];
+  amount = Number(amount);
+
+  // Update total
+  let total = document.getElementById("total");
+  let currentTotal = total.textContent.replace("Total: ₦", "");
+  currentTotal = Number(currentTotal) - amount;
+
+  total.textContent = "Total: ₦" + currentTotal;
+
+  // Remove item
   li.remove();
 }
