@@ -1,5 +1,5 @@
 let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
-function addExpense() {
+function addExpense(localStorage.setItem("expenses", JSON.stringify(expenses));) {
   const name = document.getElementById("name").value;
   const amount = document.getElementById("amount").value;
   const category = document.getElementById("category").value;
