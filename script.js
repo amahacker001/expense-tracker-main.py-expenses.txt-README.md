@@ -22,13 +22,15 @@ function addExpense() {
   list.appendChild(li);
 }
 
-  // Update total
-  let total = document.getElementById("total");
-  let currentTotal = total.textContent.replace("Total: ₦", "");
-  currentTotal = Number(currentTotal) + Number(amount);
+ function updateTotal() {
+  let total = 0;
 
-  total.textContent = "Total: ₦" + currentTotal;
+  expenses.forEach(expense => {
+    total += expense.amount;
+  });
 
+  document.getElementById("total").innerText = "₦" + total;
+}
   // Clear inputs
   document.getElementById("name").value = "";
   document.getElementById("amount").value = "";
