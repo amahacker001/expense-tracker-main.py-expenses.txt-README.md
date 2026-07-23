@@ -1,53 +1,71 @@
 body {
-    font-family: Arial, sans-serif;
-    background: #f4f6f9;
-    text-align: center;
-    margin: 0;
-    padding: 0;
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
+/* MAIN CARD */
 .container {
-    background: white;
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 12px;
+  width: 320px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
+/* TITLE */
 h1 {
-    color: #333;
+  text-align: center;
 }
 
-input {
-    width: 80%;
-    padding: 10px;
-    margin: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+/* INPUTS */
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: none;
+  border-radius: 6px;
 }
 
+/* BUTTON */
 button {
-    padding: 10px 20px;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  width: 100%;
+  padding: 10px;
+  background: #22c55e;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 button:hover {
-    background: #0056b3;
+  background: #16a34a;
 }
 
+/* LIST */
 ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 li {
-    background: #f1f1f1;
-    margin: 5px;
-    padding: 10px;
-    border-radius: 5px;
+  background: #334155;
+  margin-top: 8px;
+  padding: 10px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* DELETE BUTTON */
+li button {
+  background: red;
+  width: auto;
+  padding: 5px 8px;
 }
