@@ -88,3 +88,34 @@ function downloadCSV() {
   a.setAttribute("download", "expenses.csv");
   a.click();
 }
+let chart;
+
+function renderChart() {
+  const ctx = document.getElementById("chart");
+
+  let categories = {};
+  
+  expenses.forEach(exp => {
+    if (!categories[exp.category]) {
+      categories[exp.category] = 0;
+    }
+    categories[exp.category] += exp.amount;
+  });
+
+  const data = {
+    labels: Object.keys(categories),
+    datasets: [{
+      label: "Expenses",
+      data: Object.values(categories)
+    }]
+  };
+
+  if (chart) {
+    chart.destroy();
+  }
+
+  chart = new Chart(ctx, {
+    type: "pie",
+    data: data
+  });
+}
