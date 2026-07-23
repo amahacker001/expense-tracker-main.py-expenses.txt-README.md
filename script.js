@@ -14,7 +14,10 @@ function addExpense() {
     ${name} - ₦${amount}
     <button onclick="deleteExpense(this)">❌</button>
 `;
-
+function deleteExpense(button) {
+  const li = button.parentElement;
+  li.remove();
+}
     list.appendChild(li);
 
     // Update total
