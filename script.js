@@ -28,3 +28,7 @@ function addExpense() {
     document.getElementById("name").value = "";
     document.getElementById("amount").value = "";
 }
+function deleteExpense(button) {
+    const li = button.parentElement;
+    li.remove();
+}
