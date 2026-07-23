@@ -72,3 +72,4 @@ function loadExpenses() {
 
 // RUN WHEN PAGE LOADS
 loadExpenses();
+document.getElementById("addBtn").addEventListener("click", addExpense);
