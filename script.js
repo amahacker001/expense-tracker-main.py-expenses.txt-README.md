@@ -1,3 +1,4 @@
+let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 function addExpense() {
   const name = document.getElementById("name").value;
   const amount = document.getElementById("amount").value;
